@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Desayuno Bed & Breakfast</title>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/reservations.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <div class="parent-container">
+      <div class="header">
+        <span class="title-main">Desayuno</span>
+        <span class="title-child">Bed & Breakfast</span>
+      </div>
+
+      <div class="nav">
+        <span class="nav-item" ><a href= "index.html"> ABOUT US </a></span>
+        <span class="nav-item"> ROOMS & RATES
+      <span class="dropdown">
+        <a href="Rooms/French%20Country%20Room.html">French Country Room</a>
+        <a href="Rooms/Winter%20Garden%20Suite.html">Winter Garden Suite</a>
+        <a href="Rooms/Simcoe%20Suite.html">Simcoe Suite</a>
+        <a href="Rooms/Wellington%20Suite.html">Wellington Suite</a>
+      </span>
+    </span>
+        <span class="nav-item"> RESERVATIONS </span>
+        <span class="nav-item"> <a href= "Contact_Us/Contact%20Us.html"> CONTACT US </a></span>
+        </div>
+
+      <div class="main">
+        <div class="main-left">
+          <img src="images/booking.jpeg" height="300" width="330"/>
+          <span class="img-title">The Desayuno House</span>
+        </div>
+
+        <div class="main-right">
+          <div class="desc-title">Our price</div>
+          <div class = "content">
+            <p>
+              Room:
+                <select name="room">
+                  <option value="150">Winter Garden Suite</option>
+                  <option value="180">French Country Room</option>
+                  <option value="300">Simcoe Suite</option>
+                  <option value="400">Wellington Suite</option>
+                </select>
+            </p>
+            <p>
+              Number of Night(s):
+                <select name="nights">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="2">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </p>
+              <p>
+                <div class="wrapper">
+  	               <label for="datepicker">Pick a Date
+  		             <input type="text" name="startingDate" id="datepicker" autocomplete="off">
+  	              </label>
+                </div>
+              </p>
+              <p>
+                Click the button to calculate total.
+                <button onclick="myFunction()">Calculate</button>
+              </p>
+          </div>
+          <div class = "content">
+            <p id="total">Total :</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span class="footer-content">47 Sunset Road, Spring Valley, CA 91977 1-866-555-7324</span>
+        <span class="footer-content">	&copy; 2017 Desayuno Bed & Breakfast, LLC</span>
+      </div>
+
+    </div>
+  </body>
+</html>
+
+<script>
+$( function() {
+	$( "#datepicker" ).datepicker({
+		dateFormat: "dd-mm-yy"
+		,	duration: "fast"
+	});
+} );
+
+function myFunction() {
+  var room = document.getElementsByName("room")[0].value;
+  var nights = document.getElementsByName("nights")[0].value;
+  var date = document.getElementsByName("startingDate")[0].value;
+  var total = +room * +nights;
+  if( date== null || date== '' )
+  {
+    document.getElementById("total").innerHTML = "Date is empty ..." ;
+  }else {
+    document.getElementById("total").innerHTML = "Total: $" + total  ;
+  }
+
+}
+</script>
