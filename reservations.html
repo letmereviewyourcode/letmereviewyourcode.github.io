@@ -7,6 +7,53 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+      
+      
+<script type="text/javascript">
+
+function convert(inDollar) {
+//var inDollar = document.getElementById('total').value;
+    
+    //alert(inDollar);
+var rate = document.getElementById('currency').value;
+var si = document.getElementById('currency').selectedIndex;
+var optionTxt = document.getElementById('currency').options[si].text; 
+var convert = (inDollar*rate).toFixed(2);  // result to 2 decimal places
+//alert ("AU$" + inDollar + " converts to " + convert + " " + optionTxt);
+    //alert(convert);
+   // return document.getElementById("total").innerHTML =  convert  ;
+    return convert;
+
+}
+    function getCurrencyType()
+    {
+        var index = document.getElementById('currency').selectedIndex;
+        var currencyType = document.getElementById('currency').options[index].id;
+        return currencyType;
+    }
+
+function check(inDollar) {
+//var inDollar= document.getElementById('total').value;
+var regex= /^\d{1,}$/;
+if (!regex.test(inDollar)) {
+alert ('Dollars must be entered as numeric with max 2 decimal places');
+document.getElementById('total').value = "";  // clear the field
+return false;
+}
+else {
+return convert(inDollar);
+    
+}
+}
+
+
+</script>
+      
+      
+      
+      
+      
+      
   </head>
   <body>
     <div class="parent-container">
@@ -46,6 +93,15 @@
                   <option value="300">Simcoe Suite</option>
                   <option value="400">Wellington Suite</option>
                 </select>
+                
+                <select id= "currency" name = "currency">
+                <option value="1" id = "$">Dollar</option>
+                <option value="0.680" id = "€">Euro</option>
+                <option value="0.488" id = "£">Pound</option>
+                <option value="112.36" id = "¥">Yen</option>
+                </select>   
+                
+                
             </p>
             <p>
               Number of Night(s):
@@ -70,10 +126,12 @@
               <p>
                 Click the button to calculate total.
                 <button onclick="myFunction()">Calculate</button>
+                
               </p>
           </div>
           <div class = "content">
-            <p id="total">Total :</p>
+            <p id="total"></p>
+            
           </div>
         </div>
       </div>
@@ -104,7 +162,15 @@ function myFunction() {
   {
     document.getElementById("total").innerHTML = "Date is empty ..." ;
   }else {
-    document.getElementById("total").innerHTML = "Total: $" + total  ;
+      //alert(total);
+  total =  check(total);
+      
+      //alert(total);
+      
+    //document.getElementById("total").innerHTML =  total  ;
+      var currencyType = getCurrencyType();
+      //alert(currencyType);
+      document.getElementById("total").innerHTML = "Total:" + currencyType + total  ;
   }
 
 }
