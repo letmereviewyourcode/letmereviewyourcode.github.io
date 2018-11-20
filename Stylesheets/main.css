@@ -86,7 +86,7 @@
   align-items: center;
 }
 
-img {
+.img {
   border: 1px solid  #33658a;
     max-height:300px;
     max-width: 330px;      
