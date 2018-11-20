@@ -119,7 +119,7 @@ return convert(inDollar);
               <p>
                 <div class="wrapper">
   	               <label for="datepicker">Pick a Date
-  		             <input type="date" name="startingDate" id="datepicker" autocomplete="off">
+  		             <input type="text" name="startingDate" id="datepicker" autocomplete="off">
   	              </label>
                 </div>
               </p>
@@ -163,14 +163,24 @@ function myFunction() {
     document.getElementById("total").innerHTML = "Date is empty ..." ;
   }else {
       //alert(total);
-  total =  check(total);
+  total =  check(total);//function to check and return total (in turn calls another function convert)
       
       //alert(total);
       
     //document.getElementById("total").innerHTML =  total  ;
-      var currencyType = getCurrencyType();
+      var currencyType = getCurrencyType(); //function to get the currency type
       //alert(currencyType);
-      document.getElementById("total").innerHTML = "Total:" + currencyType + total  ;
+      
+      
+    document.getElementById("total").innerHTML = "Total:" + currencyType + total  ; 
+       document.getElementById("total").style.marginLeft= "10%";
+      document.getElementById("total").style.color = "black";
+      document.getElementById("total").style.fontWeight = "900";
+      //document.getElementById("total").style.background = "white";
+     
+      
+
+      
   }
 
 }
